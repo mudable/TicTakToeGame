@@ -6,6 +6,7 @@ public class TikTakToe {
 	static char userChoice;
 	static char computerChoice;
 	char[] board = new char[10];
+
 	Scanner sc = new Scanner(System.in);
 
 	public void createBoard() {
@@ -49,12 +50,30 @@ public class TikTakToe {
 
 	}
 
+	public void checkFreeIndex() {
+
+		System.out.println("choose index from 1 to 9  to make the move");
+		int userInput = sc.nextInt();
+
+		if (board[userInput] == 'x' | board[userInput] == 'o') {
+			System.out.println("indext is not free");
+
+		} else if (board[userInput] != 'x' | board[userInput] != 'o') {
+			System.out.println("indext is free");
+			board[userInput] = userChoice;
+
+		}
+	}
+
 	public static void main(String[] args) {
 		System.out.println("Wel Come to Tik_Tak_Toe");
+
 		TikTakToe obj = new TikTakToe();
 		obj.createBoard();
 		obj.chooseLetter();
 		obj.showBoard();
-	}
+		obj.checkFreeIndex();
+		obj.showBoard();
 
+	}
 }
